@@ -1,0 +1,7 @@
+<div class="shoppinglist-nav">
+  <a routerLink="home" routerLinkActive="active" class="nav-item"><i class="right home icon"></i>Home</a>
+  <a routerLink="lists" routerLinkActive="active" class="nav-item"><i class="right list icon"></i>Einkaufslisten</a>
+  <a *ngIf="isLoggedIn()" routerLink="edit" routerLinkActive="active" class="nav-item"><i class="right cog icon"></i>Administration</a>
+  <a routerLink="login" routerLinkActive="active" class="nav-item"><i class="right user icon"></i>{{ getLoginLabel() }}</a>
+</div>
+<router-outlet></router-outlet>

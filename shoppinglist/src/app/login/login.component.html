@@ -1,0 +1,42 @@
+<div class="list-content">
+    <div *ngIf="!isLoggedIn()">
+        <h1>Anmelden</h1>
+        <form class="ui large form" [formGroup]="loginForm"
+              (ngSubmit)="login()">
+            <div class="field">
+                <label>E-Mail</label>
+                <input type="email" id="username" formControlName="username">
+                <div *ngIf="loginForm.get('username').invalid &&
+      (loginForm.get('username').dirty ||
+      loginForm.get('username').touched) &&
+      loginForm.get('username').hasError('required')" class="ui negative message">
+                    Benutzername ist verpflichtend
+                </div>
+                <div *ngIf="loginForm.get('username').invalid &&
+            (loginForm.get('username').dirty || loginForm.get('username').touched) &&
+            loginForm.get('username').hasError('email')" class="ui negative message">
+                    E-Mail Format überprüfen
+                </div>
+            </div>
+            <div class="field">
+                <label>Passwort</label>
+                <input type="password" formControlName="password">
+                <div *ngIf="loginForm.get('password').invalid &&
+            (loginForm.get('password').dirty ||
+            loginForm.get('password').touched)" class="ui negative message">
+                    Passwort ist verpflichtend
+                </div>
+            </div>
+            <button type="submit" class="shoppinglist-button nav-btn"
+                    [disabled]="loginForm.invalid">Anmelden
+            </button>
+        </form>
+    </div>
+</div>
+    <div *ngIf="isLoggedIn()" class="logout-content">
+        <h1>Abmelden</h1>
+        <h2>Sind Sie sicher, dass Sie sich abmelden möchten?</h2>
+        <button type="button" class="shoppinglist-button nav-btn"
+                (click)="logout()">Abmelden
+        </button>
+    </div>

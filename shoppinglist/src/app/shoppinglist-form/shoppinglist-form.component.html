@@ -1,0 +1,47 @@
+<div class="list-content">
+    <button [routerLink]="'/lists'" class="shoppinglist-button nav-btn"><i class="left arrow icon"></i>Zurück zu den Listen</button>
+    <form class="ui large form" [formGroup]="shoppinglistForm" (ngSubmit)="submitForm()">
+        <h2 class="header">Allgemeine Informationen</h2>
+        <div class="ui divider"></div>
+        <div class="formsection">
+            <input type="hidden" name="id">
+            <div class="field">
+                <label>Listentitel</label>
+                <input formControlName="title" type="text" placeholder="Titel der Einkaufsliste...">
+                <div *ngIf="errors.title" class="ui negative message">{{ errors.title }}</div>
+            </div>
+            <div class="field">
+                <label>Fällig bis</label>
+                <input formControlName="dueDate" type="date">
+                <div *ngIf="errors.dueDate" class="ui negative message">{{ errors.dueDate }}</div>
+            </div>
+        </div>
+        <h2 class="header">Lebensmittel</h2>
+        <div class="ui divider"></div>
+        <div class="formsection">
+            <div class="field">
+                <div formArrayName="items">
+                    <div class="fields" *ngFor="let control of items?.controls; index as i; last as l" [formGroupName]="i">
+                        <input type="hidden" name="id">
+                        <div class="nine wide field">
+                            <label>Bezeichnung</label>
+                            <input formControlName="description" placeholder="Bezeichnung der Ware...">
+                        </div>
+                        <div class="three wide field">
+                            <label>Menge (Stück)</label>
+                            <input formControlName="quantity" type="number" value="0" min="0">
+                        </div>
+                        <div class="three wide field">
+                            <label>Max. Preis (EUR)</label>
+                            <input formControlName="max_price" type="number" value="0.00" step="0.01" min="0">
+                        </div>
+                        <div class="one wide field" *ngIf="l">
+                            <button (click)="addThumbnailControl()" class="ui button add-btn" type="button">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="ui button save-btn" [disabled]="shoppinglistForm.invalid">Speichern</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,241 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    margin: 0px !important;
+}
+
+h1 {
+    margin-bottom: 30px !important;
+}
+
+h2 {
+    margin: 50px 0 0 0 !important;
+    text-transform: uppercase;
+}
+
+.ui.divider {
+    margin: 25px 0 25px 0 !important;
+}
+
+.list-content {
+    max-width: 70em;
+    margin-left: 3em !important;
+    margin-right: 3em !important;
+}
+
+.logout-content {
+    max-width: 70em;
+    margin-left: 3em !important;
+    margin-right: 3em !important;
+    text-align: center;
+}
+
+.logout-content h2 {
+    margin-bottom: 60px !important;
+}
+
+/*----------------------------
+           BUTTONS
+ -----------------------------*/
+
+.shoppinglist-button {
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: baseline;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 8px 8px 12px #ddd6ce;
+    width: 200px;
+}
+
+.nav-btn {
+    background-color: #86b72c;
+    margin-right: 10px;
+}
+
+.nav-btn:hover {
+    background-color: #7FAE2A;
+    border-color: #7FAE2A;
+    transition: background-color 60ms;
+    color: white;
+}
+
+.basic-btn {
+    background-color: #b0a99f;
+    margin-right: 10px;
+}
+
+.basic-btn:hover {
+    background-color: #A7A097;
+    border-color: #A7A097;
+    transition: background-color 60ms;
+}
+
+.add-btn, .save-btn {
+    background-color: #b0a99f !important;
+    color: white !important;
+    box-shadow: 8px 8px 12px #ddd6ce !important;
+    cursor: pointer;
+    margin-top: 1.7em !important;
+    height: 2.9em;
+}
+.ui.button.save-btn:hover,
+.ui.button.add-btn:hover {
+    background-color: #A7A097 !important;
+    border-color: #A7A097 !important;
+    transition: background-color 60ms !important;
+}
+
+.btn-row-sl {
+    margin-top: 30px
+}
+
+/*----------------------------
+            MENU
+ -----------------------------*/
+
+.shoppinglist-nav {
+    display: flex;
+    margin-bottom: 60px;
+    background-color: #ddd6ce;
+    height: 50px;
+    padding-left: 5px;
+}
+
+.shoppinglist-nav a {
+    color: white;
+    display: block;
+    padding: 15px 45px 12px 35px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.shoppinglist-nav a:hover {
+    background-color: #ddd6ce;
+    color: white;
+    padding-top: 14px;
+}
+
+.shoppinglist-nav a.active {
+    background-color: #b0a99f;
+    color: white;
+    border-radius: 30px;
+}
+
+.nav-item {
+    text-transform: uppercase;
+}
+
+.shoppinglist-nav .icon {
+    margin-right: 10px;
+}
+
+/*----------------------------
+         LIST ELEMENT
+ -----------------------------*/
+
+.list-element {
+    float: left;
+    margin: 10px 0 10px 0;
+}
+
+.list-icon {
+    height: 50px;
+    width: 50px;
+    margin: 10px 20px 0 0;
+}
+
+/*----------------------------
+         LIST DETAILS
+ -----------------------------*/
+
+.article-icon {
+    height: 25px;
+    width: 25px;
+    margin: 0 10px 0 0;
+    padding-bottom: 5px;
+}
+
+.price-icon {
+    height: 30px;
+    width: 30px;
+    margin: 2px 10px 0 0;
+    padding-bottom: 3px;
+}
+
+.price-bg {
+    background-color: #ddd6ce;
+    color: white;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    width: 30% !important;
+    font-size: 1.5em;
+}
+
+.details-info {
+    font-size: 1.5em;
+}
+
+ul.details-info {
+    padding-left: 15px !important;
+    font-size: 1em;
+}
+
+.items-block {
+    margin-bottom: 20px !important;
+}
+
+/*----------------------------
+           COMMENT
+ -----------------------------*/
+
+.input-comment {
+    width: 77%;
+    margin: 10px 15px 20px 0;
+    font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    line-height: 1.21428571em;
+    padding: 0.67857143em 1em;
+    font-size: 1em;
+    border: 1px solid rgba(34, 36, 38, 0.15);
+    color: rgba(0, 0, 0, 0.87);
+    border-radius: 0.28571429rem;
+}
+
+.comment-box {
+    position: relative;
+    margin-bottom: 20px !important;
+}
+
+.sl-comment {
+    align-self: flex-start;
+    background-color: #dbe8a2;
+    color: white;
+    border-radius: 5px;
+    padding: 8px;
+    width: 50%;
+    margin: 0 20px;
+    z-index: 2;
+}
+
+.comment-before {
+    border-right: 25px solid transparent !important;
+    border-bottom: 30px solid #dbe8a2 !important;
+    left: 2px !important;
+    transform: rotate(200grad) !important;
+    position: absolute;
+    z-index: 1;
+}
+
+.comment-data {
+    font-size: 0.7em;
+}
+
+/*----------------------------
+              FORM
+ -----------------------------*/
+
+.formsection {
+    margin: 3.5em 2em 3.5em 2em;
+}

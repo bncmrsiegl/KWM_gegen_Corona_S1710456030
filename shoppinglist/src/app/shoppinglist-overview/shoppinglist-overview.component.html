@@ -1,0 +1,15 @@
+<div class="list-content">
+    <h1>KWM gegen Corona</h1>
+    <p>Klicke auf eine Liste, um die Details zu sehen!</p>
+    <div class="ui middle aligned selection divided list">
+        <a *ngFor="let shoppinglist of shoppinglists"
+           class="item sl-shoppinglist-element"
+           [shoppinglist]="shoppinglist"
+           [routerLink]="shoppinglist.id">
+        </a>
+        <div *ngIf="!shoppinglists" class="ui active dimmer">
+            <div class="ui large text loader">Listen werden geladen...</div>
+        </div>
+        <p *ngIf="shoppinglists && !shoppinglists.length" style="color: #888888; margin-top: 50px">Es wurden noch keine Einkaufslisten angelegt...</p>
+    </div>
+</div>

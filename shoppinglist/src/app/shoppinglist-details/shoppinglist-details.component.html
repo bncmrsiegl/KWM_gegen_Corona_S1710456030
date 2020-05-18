@@ -1,0 +1,98 @@
+<div class="list-content">
+    <button [routerLink]="'/lists'" class="shoppinglist-button nav-btn"><i class="left arrow icon"></i>Zurück zur
+        Übersicht
+    </button>
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <h2 class="header">{{ shoppinglist.title }}</h2>
+        </div>
+    </div>
+    <div class="ui divider"></div>
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <div class="ui grid">
+                <div class="four wide column">
+                    <h4 class="ui header">Ersteller:</h4>
+                    {{ shoppinglist.creator['firstname'] }} {{ shoppinglist.creator['lastname'] }}
+                </div>
+                <div class="four wide column">
+                    <h4 class="ui header">Fällig am:</h4>
+                    {{ shoppinglist.dueDate | date: 'longDate' }}
+                </div>
+                <div class="four wide column">
+                    <h4 class="ui header" style="margin: 0px">Status:</h4>
+                    <span *ngIf="checkPayment()">offen</span>
+                    <span *ngIf="!checkPayment()">erledigt</span>
+                </div>
+                <div *ngIf="shoppinglist.helper" class="four wide column">
+                    <h4 class="ui header">Helfer:</h4>
+                    {{ shoppinglist.helper['firstname'] }} {{ shoppinglist.helper['lastname'] }}
+                </div>
+            </div>
+            <div class="ui grid">
+                <div class="sixteen wide column">
+                    <h3 class="ui header">Lebensmittel:</h3>
+                    <span *ngFor="let item of shoppinglist.items">
+                        <ul class="details-info">
+                            <img src="../../assets/img/lebensmittel.png" alt="Icon Gesamtpreis"
+                                 class="list-element article-icon">
+                            {{ item.quantity }}x {{ item.description }} (maximal € {{ item.max_price}})
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!checkPayment()" class="twelve wide column">
+            <h3 class="ui header">Gesamtpreis:</h3>
+            <p class="price-bg"><img src="../../assets/img/zahlung.png" alt="Icon Gesamtpreis"
+                                     class="list-element price-icon">
+                € {{ shoppinglist.total_price }}</p>
+        </div>
+    </div>
+    <div class="btn-row-sl">
+        <span *ngIf="shoppinglist.helper">
+        <button *ngIf="checkPayment()" (click)="setPrice()" class="shoppinglist-button basic-btn"
+                [routerLink]="['/lists', shoppinglist?.id]"><i class="money icon"></i> Gesamtpreis eintragen</button>
+        </span>
+        <span *ngIf="!shoppinglist.helper">
+        <button (click)="takeList()" class="shoppinglist-button basic-btn"><i
+                class="handshake icon"></i> Liste übernehmen
+        </button>
+        </span>
+        <span *ngIf="!shoppinglist.helper">
+        <button *ngIf="authService.isLoggedIn()" class="shoppinglist-button basic-btn"
+                [routerLink]="['../../edit', shoppinglist?.id]"><i
+                class="write icon"></i> Einkaufsliste bearbeiten
+        </button>
+        <button *ngIf="authService.isLoggedIn()" class="shoppinglist-button basic-btn" (click)="removeShoppinglist()"><i
+                class="remove icon"></i>Einkaufsliste löschen
+        </button>
+        </span>
+        <div class="ui divider"></div>
+        <div>
+            <div class="wide column">
+                <h3 class="ui header">Kommentare:</h3>
+                <div *ngFor="let comment of shoppinglist.feedbacks">
+                    <div class="comment-box" >
+                        <div class="comment-before"></div>
+                        <div class="sl-comment">
+                            <span>{{ comment.text }}</span><br/>
+                            <span class="comment-data">User ID: {{ comment.writer_id}} ({{ comment.created_at | date: 'longDate'}})</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form *ngIf="feedbackForm && authService.isLoggedIn()" [formGroup]="feedbackForm" (ngSubmit)="addFeedback()">
+                     <div class="field">
+                        <input type="hidden" name="id">
+                        <input formControlName="text" class="input-comment" type="text"
+                            placeholder="Kommentar hinzufügen...">
+                        <button type="submit" class="shoppinglist-button basic-btn"><i class="comment icon"></i> Kommentar hinzufügen</button>
+                     </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

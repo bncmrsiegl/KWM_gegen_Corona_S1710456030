@@ -1,0 +1,10 @@
+<img src="../../assets/img/liste.png" alt="Icon Liste" class="list-icon list-element">
+<div class="list-element">
+    <div class="header">{{shoppinglist.title}}
+    </div>
+    <div class="description">{{ shoppinglist.dueDate | date: 'longDate' }}</div>
+    <div class="extra">
+        <i *ngIf="checkPayment()">Status: offen</i>
+        <i *ngIf="!checkPayment()">Status: erledigt</i>
+    </div>
+</div>
